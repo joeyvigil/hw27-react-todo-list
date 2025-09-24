@@ -17,25 +17,25 @@ Build a simple React todo list application that demonstrates your understanding 
 #### Core Features
 
 1.  Display Todos
--   Show a list of todos
--   Each todo should have text and completion status
--   Display count of remaining todos
+    -   Show a list of todos
+    -   Each todo should have text and completion status
+    -   Display count of remaining todos
 
 2.  Add Todos
--   Input field for new todo text
--   Submit button to add todo
--   Clear input after adding
--   Prevent adding empty todos
+    -   Input field for new todo text
+    -   Submit button to add todo
+    -   Clear input after adding
+    -   Prevent adding empty todos
 
 3.  Toggle Completion
--   Click on todo text to mark complete/incomplete
--   Visual feedback for completed todos
--   Update remaining count
+    -   Click on todo text to mark complete/incomplete
+    -   Visual feedback for completed todos
+    -   Update remaining count
 
 4.  Delete Todos
--   Delete button for each todo
--   Remove todo from list
--   Update count after deletion
+    -   Delete button for each todo
+    -   Remove todo from list
+    -   Update count after deletion
 
 ### Technical Requirements
 
@@ -64,13 +64,9 @@ Build a simple React todo list application that demonstrates your understanding 
 ### Setup Instructions
 
 1.  Create a new Vite React project: **npm create vite@latest my-todo-app -- --template react**
-
 2.  Navigate to the project: **cd my-todo-app**
-
 3.  Install dependencies: **npm install**
-
 4.  Start the development server: **npm run dev**
-
 5.  Replace the default **App.jsx** with your code
 
 ### Project Structure
