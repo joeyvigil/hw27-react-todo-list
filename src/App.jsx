@@ -1,33 +1,82 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // You'll need two useState hooks
+  const  [todos,  setTodos]  =  useState([]);
+  const  [newTodo,  setNewTodo]  =  useState("");
+
+  // Think about what each function needs to do
+  const  handleInputChange  =  (event)  =>  {
+    setNewTodo(event.target.value);
+  };
+
+  const  handleSubmit  =  (event)  =>  {
+    event.preventDefault();
+    if (newTodo !== "") {
+      const todoItem = {
+        id: Date.now(),
+        text: newTodo,
+        completed: false
+      };
+      setTodos([...todos, todoItem]);
+      setNewTodo("");
+    }
+    console.log(todos);
+  };
+  const handleToggleComplete = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+  
+  const handleDelete = (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+  <div className='Container'>
+    <h1>React Todo List</h1>
+
+    {/* Form section */}
+    <form  onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={newTodo}
+        onChange={handleInputChange}
+        placeholder="Add a new todo..."
+      />
+      <button  type="submit">Add Todo</button>
+    </form>
+    {/* List section */}  
+    <h2>Todo List</h2>
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>
+          <h3>{todo.text}</h3>
+          {todo.completed ? <button onClick={() => handleToggleComplete(todo.id)}>Complete</button> : <button onClick={() => handleToggleComplete(todo.id)}>InComplete</button>}
+          <button onClick={() => handleDelete(todo.id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
+    <h2>Count</h2>
+    <h3>Remaining Todos: {todos.length}</h3>
+    <h3>Completed Todos: {todos.map((todo) => todo.completed ? 1 : 0).reduce((a, b) => a + b, 0)}</h3>
+    <h3>Incomplete Todos: {todos.map((todo) => { return !todo.completed ? 1 : 0}).reduce((a, b) => a + b, 0)}</h3>
+  </div>
+    {/* Count and list section */}
+    {/* How will you count remaining todos? */}
+    {/* How will you map over the todos array? */}
+  
     </>
   )
 }
