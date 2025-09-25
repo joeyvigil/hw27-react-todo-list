@@ -10,11 +10,11 @@ function App() {
   const [incomplete, setIncomplete] = useState(0);
 
   // Think about what each function needs to do
-  const  handleInputChange  =  (event)  =>  {
+  const handleInputChange = (event) => {
     setNewTodo(event.target.value);
   };
 
-  const  handleSubmit  =  (event)  =>  {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (newTodo !== "") {
       const todoItem = {
