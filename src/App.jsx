@@ -4,8 +4,8 @@ import './App.css'
 
 function App() {
   // You'll need two useState hooks
-  const  [todos,  setTodos]  =  useState([]);
-  const  [newTodo,  setNewTodo]  =  useState("");
+  const [todos,  setTodos]  =  useState([]);
+  const [newTodo,  setNewTodo]  =  useState("");
   const [complete, setComplete] = useState(0);
   const [incomplete, setIncomplete] = useState(0);
 
@@ -58,7 +58,7 @@ function App() {
 
 
   return (
-    <>
+  <>
   {/* Form section */}
   <div className='container'>
     <h1>Add Items</h1>
@@ -86,6 +86,7 @@ function App() {
       ))}
     </div>
   </div>
+
   {/* Data section */}
   <div className='container'>
     <h1>Data</h1>
@@ -93,11 +94,8 @@ function App() {
     <h3>Completed: {complete}</h3>
     <h3>Incomplete: {incomplete}</h3>
   </div>
-    {/* Count and list section */}
-    {/* How will you count remaining todos? */}
-    {/* How will you map over the todos array? */}
   
-    </>
+  </>
   )
 }
 
